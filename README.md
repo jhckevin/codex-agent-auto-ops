@@ -62,7 +62,23 @@ Install **Agent Auto Ops** (English, default) or **Agent 自动运维** (Chinese
 
 ## What's next
 
-**Remote power on/off:** connect a **robotic finger** to press the physical power button, or an **ATX power-control board** for a desktop/server. These are planned extensions, not features included in the current release.
+Today, this is essentially a **close-range KVM**: leave the laptop running Codex beside the target computer, connect video capture and the ESP32, and let Codex operate it. For nearby use, this avoids having to combine computer use with ToDesk or a separate remote KVM connection.
+
+### Planned improvements
+
+- **Wireless control:** add Bluetooth / Wi-Fi command transport to support more ESP boards with wireless capabilities. Target-side HID support still needs to be checked for each board.
+- **Remote KVM integration:** extend video and input over a network so the target can be controlled from a remote location.
+- **Faster tools and workflows:** package common operations into quick tool calls and reusable workflows, reducing model round trips. Explore timed key sequences at the tool/device level for actions that need a faster response.
+- **Better prompts and self-checks:** teach the model to check frame freshness, verify the visible result of an action, and account for latency and visual events missed between sampled frames. A successful input call alone does not establish that the intended action took effect.
+- **Remote power on/off:** connect a robotic finger to press the physical power button, or an ATX power-control board for a desktop/server.
+
+These are planned additions and improvements. Wireless transport, remote KVM integration and power control are not included in the current release.
+
+### Limitations: timing matters
+
+**Low consumption and low resource use** are core design constraints. The capture and model observation loop does not guarantee that every intermediate screen state will be seen. Brief events may fall between sampled frames, and capture latency, model reasoning and tool calls all take time.
+
+The main limitation is **acting within a short time window**. A screen event may disappear before the model notices it, or the opportunity may already have passed by the time a mouse or keyboard event is sent. For example, on a computer that requires pressing **Delete during startup to enter BIOS**, the model may miss the prompt or send the key too late. The current workflow cannot guarantee success for such time-critical operations; faster tools and better prompts can help, but the resulting screen still needs to be checked.
 
 ---
 
