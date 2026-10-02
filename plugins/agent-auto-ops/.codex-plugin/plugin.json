@@ -1,0 +1,29 @@
+{
+  "name": "agent-auto-ops",
+  "version": "0.7.0",
+  "description": "Observe external devices over HDMI and control them through hardware keyboard and mouse input.",
+  "author": {
+    "name": "jhckevin"
+  },
+  "license": "AGPL-3.0-or-later",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Agent Auto Ops",
+    "shortDescription": "External device control for your Agent",
+    "longDescription": "Connect your Agent computer to an external device. Observe its screen, send hardware input, and verify each action from a new image.",
+    "developerName": "jhckevin",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Check the device connection and prepare to control the external device."
+    ],
+    "logo": "./assets/logo.svg",
+    "logoDark": "./assets/logo.svg",
+    "brandColor": "#95E4C7",
+    "websiteURL": "https://github.com/jhckevin/codex-agent-auto-ops"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "agent-auto-ops",
+  "version": "0.6.0",
+  "description": "通过画面观察与硬件键鼠操作，为 Agent 提供外部设备自动化运维能力。",
+  "author": {
+    "name": "Local developer"
+  },
+  "license": "GPL-3.0-or-later",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Agent 自动运维",
+    "shortDescription": "Agent 自动化运维与设备控制",
+    "longDescription": "连接 Agent 笔记本与被控设备，查看当前连接、执行键鼠操作，并通过新画面确认结果。",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "查看设备连接状态，准备开始自动化运维。"
+    ],
+    "logo": "./assets/logo.svg",
+    "logoDark": "./assets/logo.svg",
+    "brandColor": "#95E4C7"
+  }
+}

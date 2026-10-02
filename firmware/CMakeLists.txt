@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+set(EXTRA_COMPONENT_DIRS "vendor/waveshare_bsp" "vendor/esp_lvgl_port")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+set(PROJECT_VER "0.3.4")
+project(agent_auto_ops_adapter)

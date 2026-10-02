@@ -1,0 +1,40 @@
+name: Verify
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build && npm test && python3 tests/serial_posix_test.py
+      - run: python3 tools/package.py && node --test tools/package-smoke.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bilingual-plugins
+          path: artifacts/release-*/*
+  firmware:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v5.4.2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Firmware model checks
+        shell: bash
+        run: bash tools/check-firmware-models.sh
+      - name: Build firmware
+        shell: bash
+        run: bash tools/build-firmware.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: waveshare-firmware
+          path: |
+            firmware/build/agent_auto_ops_adapter.bin
+            firmware/build/bootloader/bootloader.bin
+            firmware/build/partition_table/partition-table.bin
+            firmware/build/ota_data_initial.bin
+            firmware/build/flasher_args.json

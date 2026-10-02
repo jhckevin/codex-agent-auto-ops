@@ -1,0 +1,6 @@
+# Preserve literal upstream patch context and third-party license whitespace.
+patches/*.patch -whitespace
+plugins/agent-auto-ops/THIRD_PARTY_LICENSES.txt -whitespace
+
+# Preserve generated font-converter output verbatim.
+firmware/main/fonts/cua_font_*.c -whitespace

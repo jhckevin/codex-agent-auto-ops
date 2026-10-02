@@ -1,0 +1,32 @@
+{
+  "name": "agent-auto-ops",
+  "interface": {
+    "displayName": "Agent Auto Ops"
+  },
+  "plugins": [
+    {
+      "name": "agent-auto-ops",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agent-auto-ops"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "agent-auto-ops-zh",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agent-auto-ops-zh"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

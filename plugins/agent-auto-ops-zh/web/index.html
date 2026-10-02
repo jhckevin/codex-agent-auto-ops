@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Agent 自动运维 · 实时工作台</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol><symbol id="i-agent" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="13" rx="3"/><path d="M8 9h2m4 0h2m-8 5h8M9 21h6m-3-3v3"/></symbol><symbol id="i-adapter" viewBox="0 0 24 24"><rect x="7" y="5" width="10" height="14" rx="3"/><path d="M10 2v3m4-3v3m-4 14v3m4-3v3M3 9h4m-4 6h4m10-6h4m-4 6h4M10 10h4v4h-4z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="i-activity" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="18" cy="17" r="3"/><path d="m17 17 1 1 2-2"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="m10.3 4.7-7.7 13A2 2 0 0 0 4.3 21h15.4a2 2 0 0 0 1.7-3.3l-7.7-13a2 2 0 0 0-3.4 0Z"/><path d="M12 9v5m0 3v.1"/></symbol><symbol id="i-cursor" viewBox="0 0 24 24"><path d="m5 3 15 10-7 1-3 7-5-18Z"/></symbol><symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="m16 10 5-3v10l-5-3"/></symbol></defs></svg>
+<header>
+ <div class="brand"><span class="brand-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="1" y="1" width="62" height="62" rx="19" fill="#122B2A" stroke="#284A46"/><path d="M35 18H26a10 10 0 0 0-10 10v10a8 8 0 0 0 8 8h5" stroke="#95E4C7" stroke-width="4" stroke-linecap="round"/><path d="M29 46h9a10 10 0 0 0 10-10V26a8 8 0 0 0-8-8h-5" stroke="#79A9E6" stroke-width="4" stroke-linecap="round"/><path d="m25 38 14-12" stroke="#E7F6F1" stroke-width="4" stroke-linecap="round"/><circle cx="39" cy="26" r="3" fill="#E7F6F1"/></svg></span><div><strong data-i18n="brand">Agent 自动运维</strong><small data-i18n="subtitle">实时工作台</small></div></div>
+ <div class="header-controls"><div class="language-control"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-globe"/></svg><select id="language" aria-label="界面语言"><option value="zh-CN" selected>中文</option><option value="en">English</option></select></div><span id="connection" class="pill" role="status" data-i18n="waitingVideo">等待视频</span></div>
+</header>
+<main>
+ <section class="workspace">
+  <div class="toolbar"><div><p class="eyebrow" data-i18n="targetLabel">目标设备</p><h1 id="target" data-i18n="defaultTarget">外部设备</h1></div><span class="live"><i></i><span id="videoStatus" data-i18n="noSignal">信号未就绪</span></span></div>
+  <div class="stage" id="stage" aria-label="目标设备实时画面">
+   <img id="image" alt="目标设备实时画面" hidden>
+   <span id="demoBadge" class="demo-badge" data-i18n="simulation" hidden>演示画面</span>
+   <div class="placeholder" id="placeholder"><div class="screen-symbol"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-screen"/></svg><span class="signal-point"></span></div><h2 data-i18n="waitingTitle">等待设备画面</h2><p data-i18n="waitingDescription">连接 HDMI 采集卡后，画面将显示在这里。</p></div>
+   <div id="marker" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cursor"/></svg><span data-i18n="marker">Agent 操作位置</span></div>
+   <div id="motion" hidden><svg class="icon" id="motionArrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg><span id="motionLabel"></span><span id="motionDelta"></span></div>
+   <div class="video-error" id="error" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-alert"/></svg><span id="errorText"></span></div>
+  </div>
+  <div class="metrics"><span id="dimensions">— × —</span><span id="frameAge" data-i18n="waitingFrame">等待新画面</span><span id="sequence" data-i18n="framePending">画面 —</span><span id="memory" data-i18n="memoryPending">服务内存 —</span></div>
+  <div class="input-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-video"/></svg><span data-i18n="videoInput">视频输入</span><strong id="deviceLabel" data-i18n="notConfigured">未配置</strong></div>
+  <p class="hint" data-i18n="viewerHint">关闭本页不影响后台操作。绿色标记表示指令位置，实际指针请以设备画面为准。</p>
+  <div class="route">
+   <div class="route-node"><span class="route-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-agent"/></svg></span><div><strong data-i18n="agent">Agent</strong><small data-i18n="agentDetail">观察与决策</small></div></div>
+   <svg class="icon route-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+   <div class="route-node"><span class="route-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-adapter"/></svg></span><div><strong data-i18n="adapter">操作适配器</strong><small id="hidState" data-i18n="usbWaiting">等待 USB 连接</small></div></div>
+   <svg class="icon route-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg>
+   <div class="route-node"><span class="route-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-screen"/></svg></span><div><strong data-i18n="target">目标设备</strong><small data-i18n="targetDetail">键鼠控制与画面返回</small></div></div>
+  </div>
+ </section>
+ <aside>
+  <div class="aside-title"><div><p class="eyebrow" data-i18n="session">当前会话</p><h2><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-activity"/></svg><span data-i18n="activity">操作记录</span></h2></div><span id="count" class="count">0</span></div>
+  <p class="muted" data-i18n="activityHint">指令发送后，由 Agent 继续观察并确认结果。</p>
+  <ol id="events"></ol>
+  <div id="empty" class="empty"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-activity"/></svg><strong data-i18n="emptyTitle">暂无操作记录</strong><p data-i18n="emptyDetail">Agent 开始操作后，记录将显示在这里。</p></div>
+  <div class="session-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-eye"/></svg><div><strong data-i18n="observer">仅供观察</strong><p data-i18n="observerDetail">键鼠操作由 Agent 插件执行。</p></div></div>
+ </aside>
+</main>
+<script src="app.js"></script>
+</body></html>

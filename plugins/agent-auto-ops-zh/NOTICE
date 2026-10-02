@@ -1,0 +1,24 @@
+Agent Auto Ops is an independent community project built for Codex.
+Copyright (c) 2026 Agent Auto Ops contributors.
+Project code and original SVG artwork: AGPL-3.0-or-later; see LICENSE.
+The initial private manifests said GPL-3.0-or-later in error. The existing
+AGPL version 3 license text is preserved and public metadata is aligned with it.
+
+OpenAI, Codex, Waveshare and other product names belong to their owners.
+No endorsement is implied. No proprietary OpenAI binaries or skill prompt
+sources are redistributed; the external-device skill is independently written.
+
+The optional Qt metadata patch targets TechxArtisanStudio/Openterface_QT
+commit 623fdd9dcfefe7752258c12eecbf8c9bfab0d662 (GPL-3.0-or-later).
+See patches/LICENSE-GPL-3.0.txt. Qt is not required by the FFmpeg path and
+no Qt executable is distributed.
+
+Waveshare BSP 1.1.1 and ESP LVGL port 2.7.2 retain their Apache-2.0 licenses.
+The vendored copies include display/power/touch adaptations documented in
+firmware/vendor/README.md. ESP-IDF, TinyUSB, LVGL and other resolved components
+retain their upstream licenses. The WenQuanYi subset includes its attribution
+and GPL-2 font embedding exception in firmware/main/fonts/LICENSE-WQY.txt.
+Bundled Node dependencies have notices in each plugin's THIRD_PARTY_LICENSES.txt.
+
+USB VID/PID 0xCAFE:0x4011 / 0x4012 are prototype values, not an assigned
+commercial identity. Obtain an appropriate USB identity for a shipped product.

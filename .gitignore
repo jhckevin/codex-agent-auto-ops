@@ -1,0 +1,16 @@
+node_modules/
+artifacts/
+.cache/
+firmware/build/
+firmware/components/
+firmware/managed_components/
+firmware/sdkconfig
+firmware/sdkconfig.old
+__pycache__/
+*.pyc
+*.log
+*.exit
+config.local.json
+*.pem
+*.key
+.env

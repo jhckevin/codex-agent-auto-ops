@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "agent-auto-ops": {
+      "command": "node",
+      "args": [
+        "dist/server.cjs"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "AGENT_AUTO_OPS_CONFIG",
+        "OPENTERFACE_CUA_CONFIG",
+        "AGENT_AUTO_OPS_LOCALE"
+      ]
+    }
+  }
+}

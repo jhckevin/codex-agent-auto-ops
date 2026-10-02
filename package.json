@@ -1,0 +1,18 @@
+{
+  "name": "codex-agent-auto-ops",
+  "version": "0.7.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "esbuild server/main.mjs --bundle --platform=node --format=cjs --target=node20 --outfile=plugins/agent-auto-ops/dist/server.cjs && esbuild tools/hardware-session.mjs --bundle --platform=node --format=cjs --target=node20 --outfile=plugins/agent-auto-ops/scripts/session-worker.cjs && esbuild tools/session-command.mjs --bundle --platform=node --format=cjs --target=node20 --outfile=plugins/agent-auto-ops/scripts/session-command.cjs && esbuild ui/app.mjs --bundle --format=iife --target=es2020 --minify --outfile=plugins/agent-auto-ops/web/app.js && python3 tools/release-notices.py && python3 tools/sync-plugins.py && node tools/render-locales.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.1",
+    "pngjs": "7.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "license": "AGPL-3.0-or-later"
+}

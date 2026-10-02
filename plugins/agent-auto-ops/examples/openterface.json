@@ -1,0 +1,12 @@
+{
+  "backend": "openterface",
+  "target_id": "external-pc",
+  "openterface": {
+    "command": "C:\\Openterface\\openterfaceQT.exe",
+    "args": [
+      "--mcp-stdio"
+    ]
+  },
+  "observation_ttl_ms": 30000,
+  "max_frame_age_ms": 1000
+}

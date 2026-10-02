@@ -1,0 +1,28 @@
+{
+  "backend": "esp32",
+  "target_id": "external-android",
+  "target_os": "android",
+  "pointer_mode": "relative",
+  "video": {
+    "driver": "ffmpeg",
+    "command": "C:\\path\\to\\shared\\ffmpeg.exe",
+    "device": "UGREEN HDMI Capture",
+    "width": 1280,
+    "height": 720,
+    "input_fps": 10,
+    "fps": 5,
+    "audio": false
+  },
+  "serial": {
+    "port": "COM5",
+    "expected_mac": "REPLACE_WITH_VERIFIED_MAC"
+  },
+  "preview": {
+    "port": 0
+  },
+  "settle_ms": 300,
+  "display_mode": "unknown",
+  "cursor_keepalive": "auto",
+  "adaptive_wait": true,
+  "post_action_timeout_ms": 1800
+}

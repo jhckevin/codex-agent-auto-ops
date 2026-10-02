@@ -1,0 +1,85 @@
+--- a/host/backend/ffmpeg/ffmpeg_frame_processor.cpp
++++ b/host/backend/ffmpeg/ffmpeg_frame_processor.cpp
+@@ -21,6 +21,8 @@
+ */
+ 
+ #include "ffmpeg_frame_processor.h"
++#include <atomic>
++#include <chrono>
+ #include <QLoggingCategory>
+ #include <QDebug>
+ #include <QThread>
+@@ -34,6 +36,18 @@
+ }
+ 
+ Q_DECLARE_LOGGING_CATEGORY(log_ffmpeg_backend)
++
++
++namespace {
++void cuaStampFrame(QImage &frame)
++{
++    static std::atomic<quint64> sequence{0};
++    const auto now = std::chrono::steady_clock::now().time_since_epoch();
++    const auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now).count();
++    frame.setText("cua_sequence", QString::number(++sequence));
++    frame.setText("cua_received_ns", QString::number(ns));
++}
++}
+ 
+ FFmpegFrameProcessor::FFmpegFrameProcessor()
+     : sws_context_(nullptr)
+@@ -283,6 +297,7 @@
+                     QMutexLocker locker(&mutex_);
+                     latest_frame_ = turbojpeg_result;
+                     latest_original_frame_ = turbojpeg_result;
++                    cuaStampFrame(latest_original_frame_);
+                 }
+ 
+                 return turbojpeg_result;
+@@ -398,7 +413,8 @@
+         {
+             QMutexLocker locker(&mutex_);
+             latest_frame_ = result;          // Frame for display (COW shared, deep copy on first write)
+-            latest_original_frame_ = originalResult;  // Original frame for screenshots
++            latest_original_frame_ = originalResult;
++            cuaStampFrame(latest_original_frame_);  // Original frame for screenshots
+         }
+     }
+     
+--- a/server/mcp/mcpToolHandler.cpp
++++ b/server/mcp/mcpToolHandler.cpp
+@@ -20,6 +20,7 @@
+ * ========================================================================== *
+ */
+ 
++#include <chrono>
+ #include "mcpToolHandler.h"
+ #include "mcpProtocol.h"
+ #include "screenAnalyzer.h"
+@@ -804,8 +805,24 @@
+     QByteArray base64Data = jpegData.toBase64();
+ 
+     QJsonObject content = McpProtocol::imageContent(base64Data, "image/jpeg");
+-    QJsonArray contents{ content };
+-
++    bool stampOk = false;
++    const qint64 receivedNs = frame.text("cua_received_ns").toLongLong(&stampOk);
++    if (!stampOk || frame.text("cua_sequence").isEmpty()) {
++        return errorResult("CUA frame metadata unavailable; use the instrumented FFmpeg backend");
++    }
++    const auto now = std::chrono::steady_clock::now().time_since_epoch();
++    const qint64 nowNs = std::chrono::duration_cast<std::chrono::nanoseconds>(now).count();
++    QJsonObject frameMeta{
++        {"sequence", frame.text("cua_sequence")},
++        {"width", frame.width()}, {"height", frame.height()},
++        {"age_ms", static_cast<double>(nowNs - receivedNs) / 1000000.0},
++        {"clock", "process_steady_clock"},
++        {"freshness_scope", "decoded_frame_receipt"}
++    };
++    QJsonObject meta{{"frame", frameMeta}};
++    QJsonObject textContent{{"type", "text"},
++        {"text", QString::fromUtf8(QJsonDocument(meta).toJson(QJsonDocument::Compact))}};
++    QJsonArray contents{ textContent, content };
+     return McpProtocol::toolResult(contents);
+ }
+ 
