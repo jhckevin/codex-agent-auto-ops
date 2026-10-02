@@ -26,6 +26,6 @@
 历史画面含私人设备信息，未随仓库分发；脱敏文字记录不是可复现的截图数据集。
 
 ## 复现
-在隔离环境执行首页检查、`bash tools/check-firmware-models.sh` 和 `bash tools/build-firmware.sh`。发布包附 SHA256SUMS；CI 分别执行插件打包与固件编译，最新状态见 GitHub Actions。
+在隔离环境执行[贡献指南中的检查](../CONTRIBUTING.zh-CN.md)、`bash tools/check-firmware-models.sh` 和 `bash tools/build-firmware.sh`。发布包附 SHA256SUMS；CI 分别执行插件打包与固件编译，最新状态见 GitHub Actions。
 
 模拟测试验证协议与包能否工作，不代表实际目标操作成功。新增硬件测试请记录精确版本、显示模式和可观察的前后变化。

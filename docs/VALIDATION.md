@@ -26,6 +26,6 @@ These observations do not establish full support for DeX, iPadOS, macOS/Linux ho
 The historical screenshots contain private device information and are not distributed. The sanitized record is descriptive evidence, not a reproducible screenshot dataset.
 
 ## Reproduce
-Run the README checks, `bash tools/check-firmware-models.sh` and `bash tools/build-firmware.sh` in an isolated development environment. Release ZIPs include SHA256SUMS. CI runs plugin packaging and firmware compilation independently; its current result is available in the GitHub Actions tab.
+Run the [contribution-guide checks](../CONTRIBUTING.md), `bash tools/check-firmware-models.sh` and `bash tools/build-firmware.sh` in an isolated development environment. Release ZIPs include SHA256SUMS. CI runs plugin packaging and firmware compilation independently; its current result is available in the GitHub Actions tab.
 
 Simulator results validate protocol behavior and packaging. They do not demonstrate physical target success. Report new device results with exact versions, display mode and observable before/after behavior.

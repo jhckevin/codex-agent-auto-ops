@@ -1,7 +1,16 @@
 # Contributing
 [English](CONTRIBUTING.md) · [简体中文](CONTRIBUTING.zh-CN.md)
 
-Develop in an isolated environment; do not modify a user's global SDK or runtime. Node 20+ is supported, and CI uses Node 24. Run the commands in README, and `bash tools/check-firmware-models.sh` with ESP-IDF 5.4.2 available. Build firmware with `bash tools/build-firmware.sh`.
+Develop in an isolated environment; do not modify a user's global SDK or runtime. Node 20+ is supported, and CI uses Node 24. Run the commands below, and `bash tools/check-firmware-models.sh` with ESP-IDF 5.4.2 available. Build firmware with `bash tools/build-firmware.sh`.
+
+```sh
+npm ci --ignore-scripts
+npm run build
+npm test
+python3 tests/serial_posix_test.py
+python3 tools/package.py
+node --test tools/package-smoke.test.mjs
+```
 
 Source of truth: `server/`, `ui/`, `firmware/`, `locales/`. `npm run build` bundles JavaScript, collects dependency notices, generates the Chinese plugin and synchronizes the marketplace. Commit the updated installable packages with source changes; marketplace users do not compile.
 
