@@ -20,11 +20,35 @@ The ESP32 connects to both computers, converting Codex's input commands into USB
 
 **For macOS and Windows.** The target needs video output and USB keyboard/mouse support. It does not need a remote desktop app for this connection.
 
-## Get started
+## Preview
 
-You need an HDMI capture card and an ESP32 adapter. The current firmware targets **Waveshare ESP32-S3-Touch-LCD-4B**.
+![Plugin viewer with a demo desktop](docs/images/viewer-en.png)
 
-Add the plugin marketplace:
+The actual viewer UI with a synthetic desktop and connection data.
+
+<img src="docs/images/device-screen-demo.png" width="360" alt="Simulated 480×480 embedded device screen">
+
+An illustration of the firmware screen layout, not a hardware photograph or an operational test.
+
+## Tested hardware
+
+- **UGREEN HDMI to USB-C capture card**: 2K30 specification; the plugin normally uses **720p / 5 fps**.
+- A **quality, standards-compliant HDMI cable**.
+- **waveshare-esp32s3-4B-touch**, formally **Waveshare ESP32-S3-Touch-LCD-4B**.
+
+## What you need
+
+1. An HDMI capture card; a capture resolution above 720p is recommended.
+2. A quality, standards-compliant HDMI cable.
+3. The specified Waveshare board, or a separately ported ESP32 board. For the wired arrangement, prefer at least two independent USB data connections and verify native USB HID support; a charge-only port does not count.
+
+Use release firmware or compile for the specified board. Other boards need their own port and build. A single-USB board could use Bluetooth / Wi-Fi for host commands while keeping USB HID toward the target; that requires additional development.
+
+## Recommended installation
+
+**Open Codex and paste the [installation prompt](docs/INSTALL-PROMPT.md).** Let it clone the repository → prepare flashing tools → flash or port for your board → install the plugin → verify video and input.
+
+Or add the marketplace manually:
 
 ```sh
 codex plugin marketplace add jhckevin/codex-agent-auto-ops

@@ -20,11 +20,35 @@ ESP32 一端连接笔记本，另一端连接被控电脑，把 Codex 的操作�
 
 **macOS / Windows 都可以用。** 被控设备需要有视频输出，并支持 USB 键鼠；这条连接不需要在被控端安装远程桌面软件。
 
-## 开始使用
+## 界面预览
 
-准备一张 HDMI 采集卡和 ESP32 控制板。当前固件适配 **Waveshare ESP32-S3-Touch-LCD-4B**。
+![插件查看器：演示桌面](docs/images/viewer-zh-CN.png)
 
-添加插件市场：
+实际查看器界面，使用演示桌面与模拟连接数据。
+
+<img src="docs/images/device-screen-demo.png" width="360" alt="嵌入式设备 480×480 屏幕模拟图">
+
+板载屏幕模拟图：按固件 UI 布局重绘，非实机照片或运行验证。
+
+## 测试设备
+
+- **UGREEN HDMI to USB-C 采集卡**：2K30 规格；插件通常按 **720P / 5fps** 使用。
+- **优质、符合标准协议的 HDMI 线缆**。
+- **waveshare-esp32s3-4B-touch**，正式型号为 **Waveshare ESP32-S3-Touch-LCD-4B**。
+
+## 基础硬件
+
+1. 一张 HDMI 采集卡，建议采集分辨率高于 720P。
+2. 一条优质、符合标准协议的 HDMI 线缆。
+3. 指定 Waveshare 板，或另行适配的 ESP32 板。常规有线方案优先使用至少两个独立 USB 数据连接，并确认芯片支持原生 USB HID；仅有充电口不算。
+
+指定板可用发布固件或自行编译；其他板需要查资料、移植并单独编译。单 USB 板可探索用蓝牙 / Wi-Fi 接收主控命令、保留 USB 向被控端输出 HID，这是额外开发方向。
+
+## 建议安装方法
+
+**打开 Codex，把[安装提示词](docs/INSTALL-PROMPT.zh-CN.md)复制给它。** 让它从 GitHub 拉代码 → 准备烧录工具 → 按板型烧录或移植固件 → 安装插件 → 验证画面和键鼠。
+
+也可以手动添加插件市场：
 
 ```sh
 codex plugin marketplace add jhckevin/codex-agent-auto-ops

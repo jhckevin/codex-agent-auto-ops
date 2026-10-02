@@ -1,6 +1,8 @@
 # 安装与配置
 [English](SETUP.md) · [简体中文](SETUP.zh-CN.md)
 
+建议打开 Codex，复制[安装提示词](INSTALL-PROMPT.zh-CN.md)，让它按实际板型准备工具、烧录、安装插件，并验证真实画面和键鼠。
+
 ## 安装插件
 按[首页](../README.zh-CN.md)添加仓库市场，选择默认英文 `agent-auto-ops` 或中文 `agent-auto-ops-zh`。也可解压 `marketplace-0.7.0.zip`，执行 `codex plugin marketplace add /解压目录的绝对路径`。
 

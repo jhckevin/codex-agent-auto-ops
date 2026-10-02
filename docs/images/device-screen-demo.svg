@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+<title>Agent Auto Ops — simulated 480 × 480 firmware screen</title>
+<desc>Illustrative reconstruction from firmware/main/device_ui.c using synthetic state. Not a photograph, hardware capture, or proof of device operation.</desc>
+<style>text{font-family:"Noto Sans CJK SC","WenQuanYi Zen Hei",sans-serif;font-size:18px;fill:#EDF4FC}.muted{fill:#91A5BF;font-size:16px}.cyan{fill:#55C9ED}.green{fill:#5DE0B2}.small{font-size:15px}</style>
+<rect width="480" height="480" fill="#0B111C"/>
+<text x="22" y="33" class="cyan">Agent 自动运维</text><text x="251" y="33" class="muted">总览</text>
+<rect x="399" y="14" width="60" height="26" rx="8" fill="#302A1D"/><text x="413" y="33" fill="#F2C477" class="small" style="fill:#F2C477">模拟</text>
+<path d="M22 52H458" stroke="#26374B"/>
+<rect x="16" y="58" width="448" height="130" rx="18" fill="#192E3E"/>
+<text x="34" y="91">模拟 · 鼠标点击</text><text x="34" y="123" class="small">左键单击 · X 50.0% / Y 50.0%</text>
+<text x="34" y="159" class="green small">已发送（演示）</text><path d="M36 180H444" stroke="#55C9ED" stroke-width="3" stroke-linecap="round"/>
+<rect x="16" y="198" width="448" height="95" rx="18" fill="#151F30" stroke="#26374B"/>
+<text x="34" y="233" class="cyan">操作输出 · 被控设备</text><text x="34" y="267" class="muted">模拟已连接</text>
+<path d="M391 244H449M432 225L452 244 432 263" stroke="#55C9ED" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="303" width="448" height="96" rx="18" fill="#151F30" stroke="#26374B"/>
+<text x="34" y="338" class="green">指令输入 · Codex</text><text x="34" y="372" class="muted">模拟已连接</text>
+<path d="M447 348H389M407 329L387 348 407 367" stroke="#5DE0B2" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="419" width="103" height="49" rx="12" fill="#204354"/>
+<rect x="131" y="419" width="103" height="49" rx="12" fill="#151F30" stroke="#26374B"/>
+<rect x="246" y="419" width="103" height="49" rx="12" fill="#151F30" stroke="#26374B"/>
+<rect x="361" y="419" width="103" height="49" rx="12" fill="#151F30" stroke="#26374B"/>
+<text x="48" y="452">总览</text><text x="163" y="452">接线</text><text x="278" y="452">记录</text><text x="393" y="452">设置</text>
+</svg>

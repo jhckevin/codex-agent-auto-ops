@@ -1,6 +1,8 @@
 # Setup
 [English](SETUP.md) · [简体中文](SETUP.zh-CN.md)
 
+For guided setup, open Codex and paste the [installation prompt](INSTALL-PROMPT.md). It covers hardware identification, flashing, plugin installation and real video/input checks.
+
 ## Install the package
 Use the repository marketplace described in the [README](../README.md). Choose English `agent-auto-ops` or Chinese `agent-auto-ops-zh`. The downloadable `marketplace-0.7.0.zip` can also be extracted and registered with `codex plugin marketplace add /absolute/path/to/extracted-folder`.
 
