@@ -20,6 +20,8 @@ The ESP32 connects to both computers, converting Codex's input commands into USB
 
 **For macOS and Windows.** The target needs video output and USB keyboard/mouse support. It does not need a remote desktop app for this connection.
 
+**macOS has passed physical acceptance testing by the maintainer**, who confirms that video and keyboard/mouse control work correctly.
+
 ## Preview
 
 ![Plugin viewer with a demo desktop](docs/images/viewer-en.png)
@@ -60,7 +62,7 @@ Install **Agent Auto Ops** (English, default) or **Agent 自动运维** (Chinese
 
 ## What's next
 
-Add a **robotic finger** to press a power button, or an **ATX power-control board** to switch on a desktop/server remotely. These are planned extensions, not features included in the current release.
+**Remote power on/off:** connect a **robotic finger** to press the physical power button, or an **ATX power-control board** for a desktop/server. These are planned extensions, not features included in the current release.
 
 ---
 
